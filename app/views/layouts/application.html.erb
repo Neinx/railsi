@@ -28,6 +28,10 @@
 						<%= link_to ("Subscribe"), 
 {:controller => 'welcome', :action => 'subscribe'} %>
 				</li>
+				<li>
+						<%= link_to ("Statuses"), 
+{:controller => 'statuses', :action => 'index'} %>
+				</li>
 				</ul>
 	</nav>
 <%= yield %>

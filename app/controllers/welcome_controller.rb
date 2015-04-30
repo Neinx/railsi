@@ -14,4 +14,7 @@ class WelcomeController < ApplicationController
 
   def subscribe
   end
+
+  def statuses
+  end
 end
