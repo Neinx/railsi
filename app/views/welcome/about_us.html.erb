@@ -1,0 +1,9 @@
+<h2>About us</h2>
+<p>On this section you will fnd out about us</p>
+
+<%= "Message from controller :
+#{@controller_message}" %>
+</br></br>
+<%= link_to ("Go to index"), 
+	{:controller => 'welcome', 
+		:action => 'index'}, class: "btn btn-primary btn-lg" %>

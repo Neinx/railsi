@@ -1,7 +1,17 @@
 class WelcomeController < ApplicationController
   def index
   end
-  def sample
+
+  def product
   	@controller_message = "Hello from controller"
+  end
+
+  def about_us
+  end
+
+  def blog
+  end
+
+  def subscribe
   end
 end
