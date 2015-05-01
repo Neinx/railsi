@@ -1,9 +1,221 @@
 <h2>Welcome</h2>
 <p>On this section you will learn how to apply 10 marketing tricks that will increase your beat sales</p>
 
-<%= "Message from controller :
-#{@controller_message}" %>
+
 </br></br>
 <%= link_to ("Go to index"), 
 	{:controller => 'welcome', 
 		:action => 'index'}, class: "btn btn-primary btn-lg" %>
+
+
+
+</br></br>
+
+
+<!-- Start of Script -->  
+<SCRIPT type=text/javascript>
+<!--
+function Dollar (val) {  // force to valid dollar amount
+var str,pos,rnd=0;
+  if (val < .995) rnd = 1;  // for old Netscape browsers
+  str = escape (val*1.0 + 0.005001 + rnd);  // float, round, escape
+  pos = str.indexOf (".");
+  if (pos > 0) str = str.substring (rnd, pos + 3);
+  return str;
+}function ReadForm (obj1, tst) { // process radio and checkbox
+var i,j,amt=0,des="",obj,pos,val,tok,tag,
+  op1a="",op1b="",op2a="",op2b="",itmn="";
+var ary = new Array ();
+  if (obj1.baseamt) amt  = obj1.baseamt.value*1.0;  // base amount
+  if (obj1.basedes) des  = obj1.basedes.value;  // base description
+  if (obj1.baseon0) op1a = obj1.baseon0.value;  // base options
+  if (obj1.baseos0) op1b = obj1.baseos0.value;
+  if (obj1.baseon1) op2a = obj1.baseon1.value;
+  if (obj1.baseos1) op2b = obj1.baseos1.value;
+  if (obj1.baseitn) itmn = obj1.baseitn.value;
+  for (i=0; i<obj1.length; i++) {  // run entire form
+    obj = obj1.elements[i];        // a form element
+    if (obj.type == "checkbox" ||  // checkboxes
+        obj.type == "radio") {     //  and radios
+      if (obj.checked) {           // did user check it?
+        val = obj.value;           // the value of the selection
+        ary = val.split (" ");          // break apart
+        for (j=0; j<ary.length; j++) {  // look at all items
+// first we do single character tokens...
+          if (ary[j].length < 2) continue;
+          tok = ary[j].substring (0,1); // first character
+          val = ary[j].substring (1);   // get data
+          if (tok == "@") amt = val * 1.0;
+          if (tok == "+") amt = amt + val*1.0;
+          if (tok == "%") amt = amt + (amt * val/100.0);
+          if (tok == "#") {             // record item number
+            if (obj1.item_number) obj1.item_number.value = val;
+          ary[j] = "";                // zap this array element
+          }
+// Now we do 3-character tokens...
+          if (ary[j].length < 4) continue;
+          tok = ary[j].substring (0,3); // first 3 chars
+          val = ary[j].substring (3);   // get data
+          if (tok == "s1=") {           // value for shipping
+            if (obj1.shipping)  obj1.shipping.value  = val;
+            ary[j] = "";                // clear it out
+          }
+          if (tok == "s2=") {           // value for shipping2
+            if (obj1.shipping2) obj1.shipping2.value = val;
+            ary[j] = "";                // clear it out
+          }
+        }
+        val = ary.join (" ");           // rebuild val with what's left        tag = obj.name.substring (obj.name.length-2);  // get flag
+        if      (tag == "1a") op1a = op1a + " " + val;
+        else if (tag == "1b") op1b = op1b + " " + val;
+        else if (tag == "2a") op2a = op2a + " " + val;
+        else if (tag == "2b") op2b = op2b + " " + val;
+        else if (tag == "3i") itmn = itmn + " " + val;
+        else if (des.length == 0) des = val;
+        else des = des + ", " + val;
+      }
+    }
+  }
+// Now summarize stuff we just processed, above
+  if (op1a.length > 0) obj1.on0.value = op1a;
+  if (op1b.length > 0) obj1.os0.value = op1b;
+  if (op2a.length > 0) obj1.on1.value = op2a;
+  if (op2b.length > 0) obj1.os1.value = op2b;
+  if (itmn.length > 0) obj1.item_number.value = itmn;
+  obj1.item_name.value = des;
+  obj1.amount.value = Dollar (amt);
+  if (obj1.tot) obj1.tot.value = "$" + Dollar (amt);
+}
+//-->
+</SCRIPT>
+
+
+
+<divman>
+
+<!-- PARAGRAPH 1 -->
+<p>
+Scroll down to see the Payment section, Or
+<br><br>
+
+Click "Licensing and Pricing" to learn more about how it works.
+<br><br>
+Call/ Text/ E-Mail us if you have any questions.(801-915-1485) 
+<br><br>
+We provide Instant Delivery.
+</p>
+<br><br>
+
+<!-- Another method for the View Cart Form - add this code anywhere within the web page -->
+
+<!-- This is the FORM to view the cart contents -->
+<!-- Note: target="paypal" was replaced with the variable target="_self" -->
+<!-- Note: shopping_url also added to code -->
+<!-- These two changes allow better functionality with IE and Firefox -->
+<form target="_self" action="https://www.paypal.com/cgi-bin/webscr" method="post" id="viewcart" name="viewcart">
+<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
+<input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg">
+<p>
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="display" value="1">
+<!-- Replace "business" value with your PayPal Email Address or Account ID -->
+<input type="hidden" name="business" value="shayansbn@yahoo.com">
+<!-- Replace value with the web page you want the customer to return to -->
+<input type="hidden" name="shopping_url" value="http://www.shynen.com">
+</p>
+</form>
+<!-- End of the viewcart FORM -->
+
+
+
+
+<!-- Start of Form -->
+<!-- Note: target="paypal" was replaced with the variable target="_self" -->
+<!-- Note: shopping_url also added to code -->
+<!-- These two changes allow better functionality with IE and Firefox -->
+<FORM onsubmit="this.target='_self';&#10; return ReadForm(this, true);" action=https://www.paypal.com/cgi-bin/webscr method=post>
+<!-- If using a Business or Company Logo Graphic, include the "cpp_header_image" variable in your View Cart code. -->
+<input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="add" value="1">
+<!-- Replace "business" value with your PayPal Email Address or Account ID -->
+<input type="hidden" name="business" value="shayansbn@yahoo.com">
+<input type="hidden" name="item_name" value="">
+<input type="hidden" name="amount" value="">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-ShopCartBF:btn/btn_cart_LG.gif:NonHosted">
+<!-- Replace value with the web page you want the customer to return to -->
+<input type="hidden" name="shopping_url" value="http://www.shynen.com">
+<!-- Replace value with the web page you want the customer to return to after a successful transaction -->
+<input type="hidden" name="return" value="http://www.yourwebsite.com/ThankYou.html">
+<!-- Replace value with the web page you want the customer to return to after item cancellation -->
+<input type="hidden" name="cancel_return" value="http://www.yourwebsite.com/Cancel.html">
+<input type="hidden" value="00.00" name="baseamt">
+<input type="hidden" value="Beat order - @00.00" name="basedes">
+<input type="hidden" name="button_subtype" value="products">
+<input type="hidden" name="no_note" value="0">
+<input type="hidden" name="cn" value="Add special instructions to the seller:">
+<input type="hidden" name="bn" value="PP-ShopCartBF:btn_cart_LG.gif:NonHosted">
+
+
+<input onclick="ReadForm (this.form, false);" type=checkbox value="1 WAV BEAT LEASE +19.95">1 WAV lease (No Tags) (Platinum quality) - Add $19.95
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=checkbox value="1 MP3 Beat Lease +7.99">1 Mp3 lease (No Tags) (Cd Quality 320) - Add $7.99
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=checkbox value="2 Platinum WAV Beat Lease +30.00"> 2 Platinum WAV leases (no Tags) - Add $30.00 (Limited offer)
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=checkbox value="1 Exclusive Beat Rights +119.95"> 1 Exclusive rights - Add $119.95
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=checkbox value="2 Exclusive Beat Rights +199.95"> 2 Exclusives rights - Add $199.95
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=checkbox value="5 Platinum WAV Beat Leases +69.95"> 5 Wav leases - 69.95
+
+<br><br><br>
+
+Modifications to the Final product.
+<br><br>
+<input onclick="ReadForm (this.form, false);" type=radio value="Exclusive Modification +0.00" name=rad>Exclusive $00.00
+<br>
+<input onclick="ReadForm (this.form, false);" type=radio value="Wav lease Modification +29.99" name=rad>Wav Lease Modification +$29.99
+<br>
+<input onclick="ReadForm (this.form, false);" type=radio value="Mp3 Lease Modification +29.50" name=rad>Mp3 Lease Modification +$29.50
+
+<br><br><br>
+
+Choose Delivery:&nbsp;&nbsp;
+<input type="hidden" name="on0" value="Delivery">
+<select name="os0">
+<OPTION value="Store Pick-up - No Charge" selected>Via Email Only - No Charge</OPTION>
+<OPTION value="Please Deliver - No Charge">Instant Delivery - No Charge</OPTION>
+</SELECT>
+
+<br><br><br>
+
+
+<input onclick="this.form.reset ();" type=button value="Reset Form">&nbsp; Item Total &gt;
+<input class=nbor size=6 value=$00.00 name=tot> &nbsp;
+
+<br><br>
+<input type=image alt="cart add" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" name=submit>
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+<br><br>
+<input onclick="document.forms.viewcart.target = '_self';&#10; document.forms.viewcart.submit ();&#10; return false;" type=image alt="cart view" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"> 
+</FORM>
+
+
+<!-- END BUTTON EXAMPLES -->
+
+
+</divman>
+<!-- END SAMPLE CODE SECTION -->
+
+<br><br><br><br>
+
+
+
+
+
+
